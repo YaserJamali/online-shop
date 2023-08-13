@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
@@ -25,7 +23,7 @@ public class RestExceptionHandler {
     @PostConstruct
     public void init(){
         try {
-            property.load(new FileReader("D:\\intelij projects\\mapsa\\projects\\e-commerce-server\\src\\main\\resources\\exceptions_fa_IR.properties",StandardCharsets.UTF_8) );
+            property.load(new FileReader("src/main/resources/exceptions_fa_IR.properties",StandardCharsets.UTF_8) );
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

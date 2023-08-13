@@ -1,22 +1,36 @@
 package com.hmaitech.onlineshop.model.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.envers.Audited;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
 
-@Data
-@NoArgsConstructor
-//@AllArgsConstructor
+import java.io.Serializable;
+import java.time.Instant;
+
+
+@AllArgsConstructor
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Component
-public class BaseDto {
+public abstract class BaseDto  {
+
+    private Long id;
 
 
-//    @CreatedDate
-////    @Column(updatable = false)
-//    private Instant createDate;
-//
-//    @LastModifiedDate
-//    private Instant updateDate;
+    private Instant createDate;
 
+    private Instant updateDate;
+
+
+    private Boolean deleted = false;
+
+
+    private Integer version;
 
 }

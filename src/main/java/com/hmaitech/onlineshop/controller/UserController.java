@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
-public class UserController extends BaseAbstractController<UserEntity,UserDto, UserService> {
+public class UserController extends BaseAbstractController<UserDto, UserService> {
 
 }

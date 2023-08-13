@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-public abstract class BaseAbstractController<E extends BaseEntity, D extends BaseDto, S extends BaseAbstractService<E, ?, D>> {
+public abstract class BaseAbstractController< D extends BaseDto, S extends BaseAbstractService<?, ?, D>> {
     @Autowired
     public S service;
 
@@ -40,9 +40,5 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
         return service.findAll();
     }
 
-    @GetMapping("/find/{example}")
-    public List<D> findByExample(@PathVariable E example) {
-        return service.findByExample(example);
-    }
 
 }

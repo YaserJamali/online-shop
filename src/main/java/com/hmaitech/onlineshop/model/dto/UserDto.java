@@ -1,20 +1,22 @@
 package com.hmaitech.onlineshop.model.dto;
 
 
-
 import com.hmaitech.onlineshop.model.enums.Role;
-import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Component
+@Getter
+@Setter
 public class UserDto extends BaseDto {
+
+
     private String name;
     private String family;
 
@@ -22,21 +24,13 @@ public class UserDto extends BaseDto {
 
     private String fullName;
 
-//    @OneToMany
-//    @ToString.Exclude
-//    private List<AddressEntity> addressEntities = new ArrayList<>();
-//
-//    @OneToMany
-//    @ToString.Exclude
-//    private List<OrderEntity> orderEntities = new ArrayList<>();
+    private List<AddressDto> addressEntities = new ArrayList<>();
+
+    private List<OrderDto> orderEntities = new ArrayList<>();
 
     private String email;
 
     private String mobileNumber;
-
-
-
-
 
 
 }

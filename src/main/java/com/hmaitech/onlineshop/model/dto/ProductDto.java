@@ -9,6 +9,7 @@ import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -21,13 +22,14 @@ public class ProductDto extends BaseDto {
 
     private String title;
     private String Description;
+    private List<PathEntity> imageUrls=new ArrayList<>();
 
     private Double Price;
     private Integer Quantity;
     private Boolean isBookmarked;
 
-   @Autowired
-    private CategoryEntity categoryEntity;
+    @Autowired
+    private CategoryDto category;
 
 
 }

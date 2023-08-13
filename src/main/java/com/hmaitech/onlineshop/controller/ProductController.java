@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/product")
-public class ProductController extends BaseAbstractController<ProductEntity, ProductDto, ProductService> {
+public class ProductController extends BaseAbstractController< ProductDto, ProductService> {
 
 }

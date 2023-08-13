@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/address")
-public class AddressController extends BaseAbstractController<AddressEntity,AddressDto, AddressService> {
+public class AddressController extends BaseAbstractController<AddressDto, AddressService> {
 
 }

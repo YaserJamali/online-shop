@@ -12,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.envers.Audited;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "productEntity")
@@ -28,7 +29,7 @@ public class ProductEntity extends BaseEntity {
     private String Description;
 
     @OneToMany
-    private List<PathEntity> imageUrls;
+    private List<PathEntity> imageUrls=new ArrayList<>();
 
     private Double Price;
     private Integer Quantity;

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/path-place")
-public class PathController extends BaseAbstractController<PathEntity, PathDto, PathService> {
+public class PathController extends BaseAbstractController< PathDto, PathService> {
 
 }

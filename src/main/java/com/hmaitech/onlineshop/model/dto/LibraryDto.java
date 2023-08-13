@@ -1,16 +1,17 @@
 package com.hmaitech.onlineshop.model.dto;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import lombok.*;
+import org.hibernate.envers.Audited;
 import org.springframework.stereotype.Component;
 
-@Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Component
+@Getter
+@Setter
 public class LibraryDto extends BaseDto {
-
 
     private String name;
 

@@ -2,23 +2,26 @@ package com.hmaitech.onlineshop.model.dto;
 
 
 import com.hmaitech.onlineshop.model.entity.ProductEntity;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Getter
-@Setter
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Component
+@Getter
+@Setter
 public class CategoryDto extends BaseDto {
 
     private String name;
 
-    @Autowired
-    private ProductEntity product;
+    private ProductDto product;
+
+
+    private List<SubCategoryDto> subCategories = new ArrayList<>();
+
 
 }
