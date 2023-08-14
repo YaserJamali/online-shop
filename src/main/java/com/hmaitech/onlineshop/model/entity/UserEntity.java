@@ -33,17 +33,21 @@ public class UserEntity extends BaseEntity {
     @Transient
     private String fullName;
 
-    @OneToMany
-    @ToString.Exclude
-    private List<AddressEntity> addressEntities = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private List<AddressEntity> addresses = new ArrayList<>();
 
-    @OneToMany
-    @ToString.Exclude
-    private List<OrderEntity> orderEntities = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private List<OrderEntity> orders = new ArrayList<>();
 
     private String email;
 
     private String mobileNumber;
 
+
+    @OneToOne(orphanRemoval = true)
+    @JoinTable(name = "users_address_entity",
+            joinColumns = @JoinColumn(name = "user_entity_id"),
+            inverseJoinColumns = @JoinColumn(name = "address_entity_id"))
+    private AddressEntity address;
 
 }

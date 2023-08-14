@@ -1,11 +1,11 @@
 package com.hmaitech.onlineshop.model.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.envers.Audited;
 import org.springframework.stereotype.Component;
 
@@ -25,11 +25,11 @@ public class CategoryEntity extends BaseEntity {
     private String name;
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "category")
     private ProductEntity product;
 
 
-    @OneToMany
+    @OneToMany(targetEntity = SubCategoryEntity.class, mappedBy = "category")
     private List<SubCategoryEntity> subCategories = new ArrayList<>();
 
 

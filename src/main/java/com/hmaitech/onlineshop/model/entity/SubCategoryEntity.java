@@ -1,8 +1,6 @@
 package com.hmaitech.onlineshop.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +21,9 @@ public class SubCategoryEntity extends BaseEntity {
 
     private String name;
 
-    @ManyToOne
-    private CategoryEntity categoryId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_entity_id")
+    private CategoryEntity category;
 
 
 }

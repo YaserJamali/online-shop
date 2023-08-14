@@ -1,8 +1,7 @@
 package com.hmaitech.onlineshop.model.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +21,9 @@ public class PathEntity extends BaseEntity {
 
     private String path;
 
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @JoinColumn(name = "product_id")
+    private ProductEntity product;
 
 }

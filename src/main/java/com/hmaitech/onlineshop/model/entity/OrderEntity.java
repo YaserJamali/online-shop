@@ -1,9 +1,6 @@
 package com.hmaitech.onlineshop.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +22,14 @@ import java.util.List;
 public class OrderEntity extends BaseEntity {
 
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "order")
     private List<ProductEntity> products = new ArrayList<>();
 
     @Column(columnDefinition = "Integer", length = 1)
     private Boolean status;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
 }

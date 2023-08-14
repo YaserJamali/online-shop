@@ -1,9 +1,7 @@
 package com.hmaitech.onlineshop.model.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.envers.Audited;
 import org.springframework.stereotype.Component;
@@ -19,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Setter
 public class AddressEntity extends BaseEntity {
 
-    @OneToOne
+    @OneToOne(mappedBy = "address")
     private UserEntity userId;
 
 
@@ -29,5 +27,9 @@ public class AddressEntity extends BaseEntity {
     private String city;
 
     private String zipcode;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
 }

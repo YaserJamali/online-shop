@@ -24,9 +24,9 @@ public class UserDto extends BaseDto {
 
     private String fullName;
 
-    private List<AddressDto> addressEntities = new ArrayList<>();
+    private List<AddressDto> addresses = new ArrayList<>();
 
-    private List<OrderDto> orderEntities = new ArrayList<>();
+    private List<OrderDto> orders = new ArrayList<>();
 
     private String email;
 

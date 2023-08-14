@@ -1,10 +1,7 @@
 package com.hmaitech.onlineshop.model.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,17 +23,26 @@ import java.util.List;
 public class ProductEntity extends BaseEntity {
 
     private String title;
+
     private String Description;
 
-    @OneToMany
-    private List<PathEntity> imageUrls=new ArrayList<>();
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "product")
+    private List<PathEntity> imageUrls = new ArrayList<>();
 
     private Double Price;
+
     private Integer Quantity;
+
     private Boolean isBookmarked;
 
-    @OneToOne
-    private CategoryEntity categoryEntity;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinTable(name = "product_category_entity",
+            joinColumns = @JoinColumn(name = "product_entity_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_entity_id"))
+    private CategoryEntity category;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_entity_id")
+    private OrderEntity order;
 
 }

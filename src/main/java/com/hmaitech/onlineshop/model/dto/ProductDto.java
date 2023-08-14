@@ -1,11 +1,12 @@
 package com.hmaitech.onlineshop.model.dto;
 
 
-import com.hmaitech.onlineshop.model.entity.CategoryEntity;
+import com.hmaitech.onlineshop.model.entity.OrderEntity;
 import com.hmaitech.onlineshop.model.entity.PathEntity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,7 @@ public class ProductDto extends BaseDto {
 
     private String title;
     private String Description;
-    private List<PathEntity> imageUrls=new ArrayList<>();
+    private List<PathEntity> imageUrls = new ArrayList<>();
 
     private Double Price;
     private Integer Quantity;
@@ -30,6 +31,10 @@ public class ProductDto extends BaseDto {
 
     @Autowired
     private CategoryDto category;
+
+
+    @Autowired
+    private OrderDto order;
 
 
 }
