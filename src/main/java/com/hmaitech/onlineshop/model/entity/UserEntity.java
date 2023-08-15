@@ -7,6 +7,7 @@ import lombok.*;
 import org.hibernate.envers.Audited;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,9 @@ public class UserEntity extends BaseEntity {
     @Column(name = "LAST_NAME", length = 50)
     private String family;
 
+    @Column(name = "NATIONAL_CODE")
+    private String nationalCode;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -42,6 +46,9 @@ public class UserEntity extends BaseEntity {
     private String email;
 
     private String mobileNumber;
+
+    @Column(name = "BIRTH_DAY")
+    private LocalDate birthDay;
 
 
     @OneToOne(orphanRemoval = true)

@@ -1,69 +1,45 @@
 package com.hmaitech.onlineshop.service;
 
-import com.hmaitech.onlineshop.model.dto.BaseDto;
 import com.hmaitech.onlineshop.model.entity.BaseEntity;
-import com.hmaitech.onlineshop.model.mapper.BaseAbstractMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
-public abstract class BaseAbstractService<E extends BaseEntity, R extends JpaRepository<E, Long>, D extends BaseDto> {
+public abstract class BaseAbstractService<E extends BaseEntity, R extends JpaRepository<E, Long>> {
 
     @Autowired
     private R repository;
 
 
-    @Autowired
-    private BaseAbstractMapper<E, D> mapper;
 
-    @Transactional
-    public D save(D dto) {
 
-        E entity = repository.save(mapper.dtoToEntity(dto));
-
-        return mapper.entityToDto(entity);
+    public E save(E entity) {
+        return repository.save(entity);
     }
 
-    @Transactional
-    public D update(D dto) {
-
-        E entity = repository.save(mapper.dtoToEntity(dto));
-
-        return mapper.entityToDto(entity);
+    public E update(E entity) {
+        return repository.save(entity);
     }
 
-    @Transactional
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
 
-    public D findById(Long id) {
-        E e = repository.findById(id).get();
-        return mapper.entityToDto(e);
+    public E findById(Long id) {
+        return repository.findById(id).get();
     }
 
-    public List<D> findAll() {
-        List<E> entityList = repository.findAll();
-        List<D> dtoList = new ArrayList<>();
-        for (E e : entityList) {
-            dtoList.add(mapper.entityToDto(e));
-        }
-        return dtoList;
+    public List<E> findAll() {
+
+        return repository.findAll();
     }
 
-    public List<D> findByExample(E entity) {
-        List<E> entityList = repository.findAll(Example.of(entity));
-        List<D> dtoList = new ArrayList<>();
-        for (E e : entityList) {
-            dtoList.add(mapper.entityToDto(e));
-        }
-        return dtoList;
+    public List<E> findByExample(E entity) {
+
+        return repository.findAll(Example.of(entity));
     }
 }

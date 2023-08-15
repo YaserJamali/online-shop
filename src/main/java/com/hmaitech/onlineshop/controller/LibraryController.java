@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/lib")
-public class LibraryController extends BaseAbstractController< LibraryDto, LibraryService> {
+public class LibraryController extends BaseAbstractController<Library, LibraryDto> {
 
 }

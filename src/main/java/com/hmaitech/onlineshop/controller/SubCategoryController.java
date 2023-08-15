@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sub-category")
-public class SubCategoryController extends BaseAbstractController< SubCategoryDto, SubCategoryService> {
+public class SubCategoryController extends BaseAbstractController<SubCategoryEntity, SubCategoryDto> {
 
 }

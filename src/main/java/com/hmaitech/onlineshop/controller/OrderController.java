@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/order")
-public class OrderController extends BaseAbstractController< OrderDto, OrderService> {
+public class OrderController extends BaseAbstractController<OrderEntity, OrderDto> {
 
 }

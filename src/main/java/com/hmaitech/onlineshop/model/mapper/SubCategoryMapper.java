@@ -2,10 +2,9 @@ package com.hmaitech.onlineshop.model.mapper;
 
 import com.hmaitech.onlineshop.model.dto.SubCategoryDto;
 import com.hmaitech.onlineshop.model.entity.SubCategoryEntity;
-import lombok.*;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class SubCategoryMapper extends BaseAbstractMapper<SubCategoryEntity, SubCategoryDto> {
+@Service
+public class SubCategoryMapper extends BaseAbstractMapper<SubCategoryDto, SubCategoryEntity> {
 
 }

@@ -2,10 +2,9 @@ package com.hmaitech.onlineshop.model.mapper;
 
 import com.hmaitech.onlineshop.model.dto.OrderDto;
 import com.hmaitech.onlineshop.model.entity.OrderEntity;
-import lombok.*;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class OrderMapper extends BaseAbstractMapper<OrderEntity, OrderDto> {
+@Service
+public class OrderMapper extends BaseAbstractMapper<OrderDto, OrderEntity> {
 
 }

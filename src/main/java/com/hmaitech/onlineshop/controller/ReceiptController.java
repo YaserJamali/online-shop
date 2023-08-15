@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/receipt")
-public class ReceiptController extends BaseAbstractController< ReceiptDto, ReceiptService> {
+public class ReceiptController extends BaseAbstractController<ReceiptEntity, ReceiptDto> {
 
 }
