@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.Date;
 
 
 @MappedSuperclass
@@ -30,10 +30,10 @@ public abstract class BaseEntity implements Serializable {
 
 
     @CreatedDate
-    private Instant createDate;
+    private Date createDate;
 
     @LastModifiedDate
-    private Instant updateDate;
+    private Date updateDate;
 
 
     @Column(columnDefinition = "integer", length = 1)

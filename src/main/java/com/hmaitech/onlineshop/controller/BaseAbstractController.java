@@ -5,13 +5,14 @@ import com.hmaitech.onlineshop.model.entity.BaseEntity;
 import com.hmaitech.onlineshop.model.mapper.BaseAbstractMapper;
 import com.hmaitech.onlineshop.service.BaseAbstractService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
@@ -19,10 +20,14 @@ import java.util.List;
 @RestController
 @Transactional(readOnly = true)
 @Validated
+@Slf4j
 public abstract class BaseAbstractController<E extends BaseEntity, D extends BaseDto> {
     //    , S extends BaseAbstractService<E, ?>, M extends BaseAbstractMapper<D, E>
+
+    protected static final Logger LOGGER = LoggerFactory.getLogger(BaseAbstractController.class);
+
     @Autowired
-    private BaseAbstractService<E,? extends JpaRepository<E,Long>> service;
+    private BaseAbstractService<E, ? extends JpaRepository<E, Long>> service;
 
 
     @Autowired
@@ -32,6 +37,8 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
     @PostMapping("/save")
     @Transactional
     public D save(@Valid @RequestBody D d) {
+//        LOGGER.info("SAVE Method Called");
+//        LOGGER.info("Parameter Of The Save Method Called: "+d);
         service.save(mapper.dtoToEntity(d));
         return d;
     }
@@ -39,6 +46,8 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
     @PutMapping("/update")
     @Transactional
     public D update(@Valid @RequestBody D d) {
+//        LOGGER.info("UPDATE Method Called");
+//        LOGGER.info("Parameter Of The UPDATE Method Called: "+d);
         service.update(mapper.dtoToEntity(d));
         return d;
     }

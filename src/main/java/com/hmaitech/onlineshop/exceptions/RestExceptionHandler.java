@@ -2,6 +2,8 @@ package com.hmaitech.onlineshop.exceptions;
 
 
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -20,6 +22,7 @@ public class RestExceptionHandler {
 
 
     private static Properties property = new Properties();
+    private static final Logger LOGGER= LoggerFactory.getLogger(RestExceptionHandler.class);
 
 
     @PostConstruct
@@ -37,7 +40,7 @@ public class RestExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleException(ServiceException exception) {
         ExceptionResponse value = new ExceptionResponse();
         value.setError(true);
-
+        LOGGER.error("System Has Exception",exception);
 
         switch (exception.getErrorCode()) {
             case "default": {
@@ -68,6 +71,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ExceptionResponse> handleException(RuntimeException runtimeException) {
+        LOGGER.error("System Has Runtime Exception",runtimeException);
         ExceptionResponse value = new ExceptionResponse();
         value.setError(true);
 
@@ -79,7 +83,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ExceptionResponse> handleException(MethodArgumentNotValidException exception) {
-        exception.printStackTrace();
+        LOGGER.error("System Has Validation Exception",exception);
         ExceptionResponse value = new ExceptionResponse();
         value.setError(true);
         FieldError fieldError = exception.getBindingResult().getFieldError();

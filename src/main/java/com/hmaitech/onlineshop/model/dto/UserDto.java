@@ -1,16 +1,17 @@
 package com.hmaitech.onlineshop.model.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.hmaitech.onlineshop.model.enums.Role;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.List;
 @Getter
 @Setter
 
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class UserDto extends BaseDto {
 
 
