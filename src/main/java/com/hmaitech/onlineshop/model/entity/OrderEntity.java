@@ -30,6 +30,6 @@ public class OrderEntity extends BaseEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private User user;
 
 }

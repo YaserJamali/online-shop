@@ -1,10 +1,11 @@
 package com.hmaitech.onlineshop.controller;
 
+import com.hmaitech.onlineshop.model.converter.BaseConverter;
 import com.hmaitech.onlineshop.model.dto.BaseDto;
 import com.hmaitech.onlineshop.model.entity.BaseEntity;
-import com.hmaitech.onlineshop.model.mapper.BaseAbstractMapper;
 import com.hmaitech.onlineshop.service.BaseAbstractService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
 
 
     @Autowired
-    private BaseAbstractMapper<D, E> mapper;
+    private BaseConverter<D, E> mapper;
 
 
     @PostMapping("/save")
@@ -39,7 +40,7 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
     public D save(@Valid @RequestBody D d) {
 //        LOGGER.info("SAVE Method Called");
 //        LOGGER.info("Parameter Of The Save Method Called: "+d);
-        service.save(mapper.dtoToEntity(d));
+        service.save(mapper.convertEntity(d));
         return d;
     }
 
@@ -48,7 +49,7 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
     public D update(@Valid @RequestBody D d) {
 //        LOGGER.info("UPDATE Method Called");
 //        LOGGER.info("Parameter Of The UPDATE Method Called: "+d);
-        service.update(mapper.dtoToEntity(d));
+        service.update(mapper.convertEntity(d));
         return d;
     }
 
@@ -60,18 +61,19 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
 
     @GetMapping("/find/{id}")
     public D findById(@PathVariable Long id) {
-        return mapper.entityToDto(service.findById(id));
+        return mapper.convertDto(service.findById(id));
     }
 
     @GetMapping("/find")
-    public List<D> findAll() {
-        return mapper.dtoToEntity(service.findAll());
+    public List<D> findAll(@PathParam("pageNumber") int pageNumber,
+                           @PathParam("pageSize") int pageSize) {
+        return mapper.convertDto(service.findAll(pageNumber, pageSize));
     }
 
 
-    @GetMapping("/find/{example}")
-    public List<D> findByExample(@PathVariable D example) {
-        return mapper.dtoToEntity(service.findByExample(mapper.dtoToEntity(example)));
+    @PostMapping("/find")
+    public List<D> findByExample(@RequestBody D example) {
+        return mapper.convertDto(service.findByExample(mapper.convertEntity(example)));
     }
 
 }

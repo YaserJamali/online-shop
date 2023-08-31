@@ -43,4 +43,5 @@ public abstract class BaseEntity implements Serializable {
     @Version
     private Integer version;
 
+
 }

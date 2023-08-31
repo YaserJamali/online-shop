@@ -1,54 +1,3 @@
-<!--<configuration scan="true" scanPeriod="30 seconds">-->
-<!--    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
-<!--        <file>tests.log</file>-->
-<!--        <append>true</append>-->
-<!--        <encoder>-->
-<!--            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
-<!--        </encoder>-->
-<!--        <logger name="com.hmaitech.onlineshop.controller" level="info" additivity="false"/>-->
-<!--&lt;!&ndash;        <appender-ref ref="FILE" />&ndash;&gt;-->
-<!--&lt;!&ndash;        </logger>&ndash;&gt;-->
-<!--        <logger name="com.hmaitech.onlineshop.model.entity" level="warn" additivity="false"/>-->
-<!--        <logger name="com.hmaitech.onlineshop.service" level="warn" additivity="false"/>-->
-<!--        <logger name="com.hmaitech.onlineshop.repository" level="warn" additivity="false"/>-->
-<!--&lt;!&ndash;        <appender-ref ref="FILE-ROLLING"/>&ndash;&gt;-->
-<!--        <logger name="com.hmaitech.onlineshop.Server" level="info" additivity="false"/>-->
-<!--    </appender>-->
-
-<!--    <appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
-<!--        <file>logs/myApp.log</file>-->
-<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-<!--            <fileNamePattern>/tmp/logback.%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
-<!--            <timeBasedFileNamingAndTriggeringPolicy-->
-<!--                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
-<!--                <maxFileSize>1MB</maxFileSize>-->
-<!--            </timeBasedFileNamingAndTriggeringPolicy>-->
-<!--            <maxHistory>7</maxHistory>-->
-<!--        </rollingPolicy>-->
-<!--&lt;!&ndash;        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">&ndash;&gt;-->
-<!--&lt;!&ndash;            <FileNamePattern>logs/myAppp.%i.log.zip</FileNamePattern>&ndash;&gt;-->
-<!--&lt;!&ndash;            <MinIndex>1</MinIndex>&ndash;&gt;-->
-<!--&lt;!&ndash;            <MaxIndex>10</MaxIndex>&ndash;&gt;-->
-<!--&lt;!&ndash;        </rollingPolicy>&ndash;&gt;-->
-
-<!--        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
-<!--            <MaxFileSize>2MB</MaxFileSize>-->
-<!--        </triggeringPolicy>-->
-
-<!--        <encoder>-->
-<!--            <pattern>%date %level [%thread] %logger{10} [%file:%line] -%kvp- %msg%n</pattern>-->
-<!--        </encoder>-->
-<!--    </appender>-->
-
-<!--    <root level="info">-->
-<!--        <appender-ref ref="FILE" />-->
-<!--        <appender-ref ref="STDOUT" />-->
-<!--    </root>-->
-<!--</configuration>-->
-
-
-<!--pojfpkfs-->
-
 
 <!--        <?xml version="1.0" encoding="UTF-8"?>-->
 <configuration>
@@ -85,7 +34,7 @@
 </logger>
 
 <!-- By default, the level of the root level is set to DEBUG -->
-<root level="DEBUG">
+<root level="warn">
     <appender-ref ref="FILE" />
     <appender-ref ref="STDOUT" />
 </root>

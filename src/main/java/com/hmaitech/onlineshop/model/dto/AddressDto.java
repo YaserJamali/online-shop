@@ -1,6 +1,7 @@
 package com.hmaitech.onlineshop.model.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.OneToOne;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,15 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 
 public class AddressDto extends BaseDto {
 
 
 
-    private UserDto userId=new UserDto();
+
+
+    private UsersDto userId=new UsersDto();
 
 
     private String addressLine1;

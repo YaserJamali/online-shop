@@ -29,11 +29,7 @@ mvnw.cmd
 # Directories
 *.idea
 *.jpb
-*.mvn
-target
-HELP.md
 mvnw
-mvnw.cmd
 README.md
 
 

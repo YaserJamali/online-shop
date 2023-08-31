@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class AddressEntity extends BaseEntity {
 
     @OneToOne(mappedBy = "address")
-    private UserEntity userId;
+    private User userId;
 
 
     private String addressLine1;
@@ -30,6 +30,6 @@ public class AddressEntity extends BaseEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private User user;
 
 }
