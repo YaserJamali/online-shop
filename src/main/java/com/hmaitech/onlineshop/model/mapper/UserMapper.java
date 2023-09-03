@@ -7,15 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserMapper  {
+public class UserMapper {
 
 
     @Autowired
     private User entity;
 
+
+    @Autowired
+    private UsersDto dto;
+
     public User dtoToEntity(UsersDto dto) {
         BeanUtils.copyProperties(dto, entity);
         return entity;
+    }
+
+    public UsersDto dtoToEntity(User entity) {
+        BeanUtils.copyProperties(entity, dto);
+        return dto;
     }
 
 

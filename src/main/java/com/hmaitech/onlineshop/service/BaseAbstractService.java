@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class BaseAbstractService<E extends BaseEntity, R extends BaseRepository<E, Long>> {
 
     @Autowired
-    private R repository;
+    protected R repository;
 
 
 

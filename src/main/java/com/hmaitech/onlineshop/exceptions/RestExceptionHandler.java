@@ -125,4 +125,19 @@ public class RestExceptionHandler {
 
     }
 
+
+    @ExceptionHandler(UserNameOrPasswordWrongException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ExceptionResponse> handleException(UserNameOrPasswordWrongException exception) {
+        LOGGER.error("User Name or Password is Wrong",exception);
+
+        ExceptionResponse value = new ExceptionResponse();
+        value.setError(true);
+
+        value.setMessage(property.getProperty("credential-exception"));
+
+        return ResponseEntity.badRequest().body(value);
+
+    }
+
 }
