@@ -38,8 +38,7 @@ public abstract class BaseAbstractController<E extends BaseEntity, D extends Bas
     @PostMapping("/save")
     @Transactional
     public D save(@Valid @RequestBody D d) {
-//        LOGGER.info("SAVE Method Called");
-//        LOGGER.info("Parameter Of The Save Method Called: "+d);
+
         service.save(mapper.convertEntity(d));
         return d;
     }

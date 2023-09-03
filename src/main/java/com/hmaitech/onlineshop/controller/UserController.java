@@ -7,6 +7,8 @@ import com.hmaitech.onlineshop.model.dto.UsersDto;
 import com.hmaitech.onlineshop.model.entity.User;
 import com.hmaitech.onlineshop.model.mapper.UserMapper;
 import com.hmaitech.onlineshop.service.UserService;
+import com.hmaitech.onlineshop.utils.Login;
+import com.hmaitech.onlineshop.utils.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,14 +50,13 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public UsersDto login(@RequestBody UsersDto dto) throws UserNameOrPasswordWrongException {
+    public Login login(@RequestBody UsersDto dto) throws UserNameOrPasswordWrongException {
         User user = service.login(dto);
+
         if (user != null) {
-            return mapper.dtoToEntity(user);
+            return service.login(dto.getEmail(), dto.getPassword1());
         } else throw new UserNameOrPasswordWrongException("credential-exception");
-
     }
-
 }
 
 

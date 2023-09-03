@@ -7,12 +7,14 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 @Qualifier("userRepository")
 public interface UserRepository extends BaseRepository<User, Long>, JpaSpecificationExecutor<User> {
 
 
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
 
 }
