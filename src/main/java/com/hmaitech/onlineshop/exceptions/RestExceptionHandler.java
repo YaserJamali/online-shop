@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -92,6 +93,36 @@ public class RestExceptionHandler {
         value.setMessage(message);
 
         return ResponseEntity.badRequest().body(value);
+    }
+
+
+//    @ExceptionHandler(ResponseStatusException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    public ResponseEntity<ExceptionResponse> handleException(ResponseStatusException exception) {
+//        LOGGER.error("THw Password Entry Does Not Matches",exception);
+//
+//        ExceptionResponse value = new ExceptionResponse();
+//        value.setError(true);
+//
+//        value.setMessage(property.getProperty("pass-does-not-match"));
+//
+//        return ResponseEntity.badRequest().body(value);
+//
+//    }
+
+
+    @ExceptionHandler(PasswordNotMatchException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ExceptionResponse> handleException(PasswordNotMatchException exception) {
+        LOGGER.error("The Passwords Entry Does Not Matches",exception);
+
+        ExceptionResponse value = new ExceptionResponse();
+        value.setError(true);
+
+        value.setMessage(property.getProperty("pass-does-not-match-class"));
+
+        return ResponseEntity.badRequest().body(value);
+
     }
 
 }

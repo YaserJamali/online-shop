@@ -5,17 +5,21 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 
 @Component
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UsersDto extends BaseDto {
+
+
     @NotEmpty
     @NotNull
     @JsonProperty("first_name")
@@ -42,33 +46,7 @@ public class UsersDto extends BaseDto {
     private String password2;
 
 
-    public UsersDto() {
-
-    }
-
-
-    public static UsersDto of(String firstName, String lastName, String email, String password1, String password2) {
-        return new UsersDto(null, null, null, false, null, firstName, lastName, email, password1, password2);
-    }
-
-    private UsersDto(Long id, Date createDate, Date updateDate, Boolean deleted, Integer version, String firstName, String lastName, String email, String password1, String password2) {
-        super(id, createDate, updateDate, deleted, version);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password1 = password1;
-        this.password2 = password2;
-    }
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        if (password2.equals(this.password1)) {
-            this.password2 = password2;
-        } else throw new RuntimeException();
-    }
-
-
 }
+
+
+

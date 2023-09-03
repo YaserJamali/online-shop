@@ -14,6 +14,8 @@ import java.util.Date;
 @Audited
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User extends BaseEntity{
 
 
@@ -36,21 +38,5 @@ public class User extends BaseEntity{
             inverseJoinColumns = @JoinColumn(name = "address_entity_id"))
     private AddressEntity address;
 
-    public User() {
 
-    }
-
-
-    public static User of(String firstName, String lastName, String email, String password1, String password2){
-        return new User(null,null,null,false,null,firstName,lastName,email,password1,password2);
-    }
-
-    private User(Long id, Date createDate, Date updateDate, Boolean deleted, Integer version, String firstName, String lastName, String email, String password1, String password2) {
-        super(id, createDate, updateDate, deleted, version);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password1 = password1;
-        this.password2 = password2;
-    }
 }
